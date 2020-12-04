@@ -8,7 +8,7 @@ class Ship {
 
 		this.angle = (90 / 180) * Math.PI; // convert angle to radians
 
-		this.radius = 40;
+		this.radius = 20;
 		this.canShoot = true;
 		this.isDead = false;
 		this.explodeTime = 0;

@@ -19,7 +19,7 @@ const fxHit = new Sound("sounds/AsteroidExplosion.mp3", 5);
 
 // set up music
 const music = new Music("sounds/MainGameMusic.mp3");
-const newLevelMusic = new Sound("sounds/newLevelMusic.mp3");
+const newLevelMusic = new Sound("sounds/NewLevelMusic.mp3");
 let asteroidsLeft, asteroidsTotal;
 
 const newLevel = () => {
