@@ -1,5 +1,7 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
+let musicBtn = document.getElementById("music-btn");
+let MUSIC_ON = false;
 
 let thruster = document.getElementById("fire");
 
@@ -7,23 +9,40 @@ let thruster = document.getElementById("fire");
 document.addEventListener("keydown", keyDown);
 document.addEventListener("keyup", keyUp);
 
+musicBtn.addEventListener("click", () => {
+	MUSIC_ON = !MUSIC_ON;
+	if (MUSIC_ON) {
+		musicBtn.innerText = "Turn off Music";
+	} else {
+		musicBtn.innerText = "Turn on Music";
+	}
+});
+
+let background = new Image();
+background.src = "images/background.jpg";
+
+// Make sure the image is loaded first otherwise nothing will draw.
+background.onload = function () {
+	ctx.drawImage(background, 0, 0);
+};
+
 // game Parameters
 let level, asteroids, ship, text, textAlpha, lives, score, highScore;
 
 // set up sound effects
 // have to take index.html as reference when calculating the relative path
-const fxLaser = new Sound("sounds/laser.m4a", 5, 0.5);
+const fxLaser = new Sound("sounds/laser.m4a", 5, 0.1);
 const fxExplode = new Sound("sounds/AsteroidExplosion.mp3");
-const fxThrust = new Sound("sounds/thrust.m4a");
+const fxThrust = new Sound("sounds/thrust.m4a", 1, 0.5);
 const fxHit = new Sound("sounds/AsteroidExplosion.mp3", 5);
 
 // set up music
-const music = new Music("sounds/MainGameMusic.mp3");
+const music = new Sound("sounds/MainGameMusic.mp3");
 const newLevelMusic = new Sound("sounds/NewLevelMusic.mp3");
 let asteroidsLeft, asteroidsTotal;
 
 const newLevel = () => {
-	// music.stopIt();
+	music.stopIt();
 	newLevelMusic.playIt();
 	text = `LEVEL ${level + 1}`;
 	textAlpha = 1.0;
@@ -58,11 +77,10 @@ const mainLoop = () => {
 
 	// play the music
 	if (MUSIC_ON) {
-		music.tick();
+		music.playIt();
 	}
 
-	ctx.fillStyle = "black";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 	// move / thrust the ship
 	if (ship.isThrusting && !isShipExploding && !ship.isDead) {
