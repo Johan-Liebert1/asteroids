@@ -5,6 +5,20 @@ let MUSIC_ON = false;
 
 let thruster = document.getElementById("fire");
 
+const WINDOW_WIDTH = window.innerWidth;
+
+if (window.innerWidth < 600) {
+	showMobileButtons();
+}
+
+canvas.width = window.innerWidth > 1000 ? window.innerWidth * 0.7 : window.innerWidth * 0.95;
+
+if (window.innerWidth < 600) {
+	canvas.height = window.innerHeight * 0.5;
+} else {
+	canvas.height = window.innerHeight * 0.9;
+}
+
 // event listeners
 document.addEventListener("keydown", keyDown);
 document.addEventListener("keyup", keyUp);
@@ -18,7 +32,7 @@ musicBtn.addEventListener("click", () => {
 	}
 });
 
-let background = new Image();
+const background = new Image();
 background.src = "images/background.jpg";
 
 // Make sure the image is loaded first otherwise nothing will draw.
@@ -31,7 +45,7 @@ let level, asteroids, ship, text, textAlpha, lives, score, highScore;
 
 // set up sound effects
 // have to take index.html as reference when calculating the relative path
-const fxLaser = new Sound("sounds/laser.m4a", 5, 0.1);
+const fxLaser = new Sound("sounds/laser.m4a", 5, 0.05);
 const fxExplode = new Sound("sounds/AsteroidExplosion.mp3");
 const fxThrust = new Sound("sounds/thrust.m4a", 1, 0.5);
 const fxHit = new Sound("sounds/AsteroidExplosion.mp3", 5);
@@ -61,13 +75,6 @@ const newGame = () => {
 };
 
 newGame();
-
-function drawImageCenter(image, x, y, cx, cy, scale, rotation) {
-	ctx.setTransform(scale, 0, 0, scale, x, y); // sets scale and origin
-	ctx.rotate(rotation);
-	ctx.drawImage(image, -cx, -cy, PLAYER_DIM, PLAYER_DIM);
-	ctx.setTransform(1, 0, 0, 1, 0, 0);
-}
 
 // MAIN GAME LOOP IS DONW BELOW
 
@@ -194,15 +201,15 @@ const mainLoop = () => {
 		if (!ship.isDead) {
 			// rotate ship
 			ship.angle += ship.rotation;
-			drawImageCenter(
-				ship.image,
-				ship.playerX,
-				ship.playerY,
-				ship.playerXMiddle,
-				ship.playerYMiddle,
-				2,
-				ship.rotation
-			);
+			// drawImageCenter(
+			// 	ship.image,
+			// 	ship.playerX,
+			// 	ship.playerY,
+			// 	ship.playerXMiddle,
+			// 	ship.playerYMiddle,
+			// 	2,
+			// 	ship.rotation
+			// );
 
 			// move the ship
 			ship.x += ship.thrust.x;

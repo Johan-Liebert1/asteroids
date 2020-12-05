@@ -3,10 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b3b0c5f0f3.js" crossorigin="anonymous"></script>
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
         img {
             display: none;
         }
+
+        main {
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        #fire {
+            height: 3rem;
+            width: 3rem;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #btnsForMobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .lrcontainer {
+            width: 10rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .fas {
+            font-size: 2rem;
+        }
+
     </style>
     <title>Asteroids</title>
 </head>
@@ -22,8 +65,21 @@
     <img src = 'images/bullet.png' id = 'bullet'/>
     <img src = 'images/newalien.png' id = 'player' style="border-color: white;"/>
     
-    
-    <canvas id = 'canvas' width = "1200" height = "700"></canvas>
+    <main>
+        <canvas id = 'canvas' height = "700"></canvas>
+    </main>
+
+    <div id = 'btnsForMobile'>
+        <div id = 'thrustBtn'><i class="fas fa-arrow-up"></i></div>
+
+        <div class = 'lrcontainer'>
+            <div id = 'leftBtn'><i class="fas fa-arrow-left"></i></div>
+            <div id = 'fire'>Fire</div>
+            <div id = 'rightBtn'><i class="fas fa-arrow-right"></i></div>
+        </div>
+
+    </div>
+
 
     <button id = 'music-btn'>Turn on Music</button>
 
@@ -36,6 +92,7 @@
     <script src="js/Sound.js"></script>
     <script src="js/helpersShip.js"></script>
     <script src="js/helpersAsteroids.js"></script>
+    <script src="js/mobileHelper.js"></script>
     <script src="js/index.js"></script>
 
 </body>

@@ -22,15 +22,5 @@ class Asteroid {
 
 		this.middleX = Math.ceil((x + w) / 2);
 		this.middleY = Math.ceil((y + h) / 2);
-
-		this.offset = [];
-		this.vertices = Math.floor(
-			Math.random() * (ASTEROIDS_VERTICES + 1) + ASTEROIDS_VERTICES / 2
-		);
-
-		// populate the offsets array
-		for (let i = 0; i < this.vertices; i++) {
-			this.offset.push(Math.random() * ASTEROIDS_JAGG * 2 + 1 - ASTEROIDS_JAGG);
-		}
 	}
 }

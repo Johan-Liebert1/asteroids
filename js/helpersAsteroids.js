@@ -108,7 +108,6 @@ const destroyAsteroid = index => {
 
 	// ratio of remaining asteroids
 	asteroidsLeft--;
-	music.setAsteroidRatio(asteroidsLeft === 0 ? 1 : asteroidsLeft / asteroidsTotal);
 
 	if (asteroids.length === 0) {
 		level++;
