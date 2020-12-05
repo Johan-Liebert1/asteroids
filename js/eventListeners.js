@@ -22,6 +22,7 @@ const keyDown = e => {
 
 		case 39:
 			ship.rotation = -((ROTATE_SPEED / 180) * Math.PI) / FPS;
+
 			break;
 
 		default:

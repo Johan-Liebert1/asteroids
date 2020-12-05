@@ -24,6 +24,14 @@ const showMobileButtons = () => {
 		ship.isThrusting = false;
 	});
 
+	thrustBtn.addEventListener("mousedown", e => {
+		ship.isThrusting = true;
+	});
+
+	thrustBtn.addEventListener("mouseup", e => {
+		ship.isThrusting = false;
+	});
+
 	rightBtn.addEventListener("touchstart", () => {
 		ship.rotation = -((ROTATE_SPEED / 180) * Math.PI) / FPS;
 	});
@@ -32,11 +40,27 @@ const showMobileButtons = () => {
 		ship.rotation = 0;
 	});
 
+	rightBtn.addEventListener("mousedown", () => {
+		ship.rotation = -((ROTATE_SPEED / 180) * Math.PI) / FPS;
+	});
+
+	rightBtn.addEventListener("mouseup", () => {
+		ship.rotation = 0;
+	});
+
 	leftBtn.addEventListener("touchstart", () => {
 		ship.rotation = ((ROTATE_SPEED / 180) * Math.PI) / FPS;
 	});
 
 	leftBtn.addEventListener("touchend", () => {
+		ship.rotation = 0;
+	});
+
+	leftBtn.addEventListener("mousedown", () => {
+		ship.rotation = ((ROTATE_SPEED / 180) * Math.PI) / FPS;
+	});
+
+	leftBtn.addEventListener("mouseup", () => {
 		ship.rotation = 0;
 	});
 };

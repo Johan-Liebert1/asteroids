@@ -1,12 +1,4 @@
 const drawShip = (x, y, angle, radius, color = "white") => {
-	// ctx.drawImage(
-	// 	ship.image,
-	// 	x + (4 / 3) * radius * Math.cos(angle) - PLAYER_DIM / 2,
-	// 	y - (4 / 3) * radius * Math.sin(angle) + PLAYER_DIM / 2 - 9,
-	// 	PLAYER_DIM,
-	// 	PLAYER_DIM
-	// );
-
 	ctx.strokeStyle = color;
 	ctx.lineWidth = 2;
 	ctx.beginPath();
@@ -36,38 +28,6 @@ const drawShip = (x, y, angle, radius, color = "white") => {
 		ctx.arc(ship.playerXMiddle, ship.playerYMiddle, ship.radius, 0, Math.PI * 2, false);
 		ctx.stroke();
 	}
-};
-
-// const drawShip = (x, y, angle, radius, color = "white") => {
-// 	ctx.drawImage(greenufo, x, y, 150, 50);
-// };
-
-const drawThruster = () => {
-	ctx.fillStyle = "red";
-	ctx.strokeStyle = "orange";
-	ctx.lineWidth = SHIP_SIZE / 5;
-	ctx.beginPath();
-
-	ctx.moveTo(
-		// rear left
-		ship.x - ship.radius * ((2 / 3) * Math.cos(ship.angle) + 0.5 * Math.sin(ship.angle)),
-		ship.y + ship.radius * ((2 / 3) * Math.sin(ship.angle) - 0.5 * Math.cos(ship.angle))
-		// ship.x,
-		// ship.y - PLAYER_DIM / 2
-	);
-	ctx.lineTo(
-		// rear centre (behind the ship)
-		ship.x - ((ship.radius * 5) / 3) * Math.cos(ship.angle),
-		ship.y + ((ship.radius * 5) / 3) * Math.sin(ship.angle)
-	);
-	ctx.lineTo(
-		// rear right
-		ship.x - ship.radius * ((2 / 3) * Math.cos(ship.angle) - 0.5 * Math.sin(ship.angle)),
-		ship.y + ship.radius * ((2 / 3) * Math.sin(ship.angle) + 0.5 * Math.cos(ship.angle))
-	);
-	ctx.closePath();
-	ctx.fill();
-	ctx.stroke();
 };
 
 const drawShipExplosion = () => {

@@ -7,7 +7,7 @@ class Ship {
 		this.y = canvas.height / 2;
 
 		this.angle = (90 / 180) * Math.PI; // convert angle to radians
-
+		this.playerAngle = 0;
 		this.radius = window.innerWidth > 600 ? 20 : 10;
 		this.canShoot = true;
 		this.isDead = false;

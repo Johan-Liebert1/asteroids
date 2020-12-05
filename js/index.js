@@ -6,9 +6,13 @@ let MUSIC_ON = false;
 
 let thruster = document.getElementById("fire");
 
+let playerImg = document.getElementById("player");
+playerImg.width = PLAYER_DIM;
+playerImg.height = PLAYER_DIM;
+
 const WINDOW_WIDTH = window.innerWidth;
 
-if (window.innerWidth < 600) {
+if (window.innerWidth < 1000) {
 	showMobileButtons();
 }
 
@@ -81,6 +85,19 @@ const newGame = () => {
 
 newGame();
 
+// ========================== rotate image ============================================
+
+const drawImageRotated = (img, x, y, rot) => {
+	ctx.setTransform(1, 0, 0, 1, x, y); // set the scale and the center pos
+	ctx.rotate(rot); // set the rotation
+	ctx.drawImage(img, -img.width / 2, -img.height / 2, img.width, img.height); // draw image offset
+	// by half its width
+	// and heigth
+	ctx.setTransform(1, 0, 0, 1, 0, 0); // restore default transform
+};
+
+// ========================== rotate image ============================================
+
 // MAIN GAME LOOP IS DONW BELOW
 
 const mainLoop = () => {
@@ -99,11 +116,6 @@ const mainLoop = () => {
 		ship.thrust.x += (ship.thrustAcceleration * Math.cos(ship.angle)) / FPS;
 		ship.thrust.y += (ship.thrustAcceleration * Math.sin(ship.angle)) / FPS;
 		fxThrust.playIt();
-
-		if (isShipBlinking && !ship.isDead) {
-			// draw thruster
-			drawThruster();
-		}
 	}
 
 	if (!ship.isThrusting) {
@@ -157,11 +169,12 @@ const mainLoop = () => {
 
 	// draw game lives
 	for (let i = 0; i < lives; i++) {
-		drawShip(
-			canvas.width * 0.05 + i * canvas.width * 0.05,
+		ctx.drawImage(
+			ship.image,
+			canvas.width * 0.05 + i * canvas.width * 0.075,
 			canvas.height * 0.05,
-			(90 / 180) * Math.PI,
-			7
+			PLAYER_DIM,
+			PLAYER_DIM
 		);
 	}
 
@@ -206,15 +219,8 @@ const mainLoop = () => {
 		if (!ship.isDead) {
 			// rotate ship
 			ship.angle += ship.rotation;
-			// drawImageCenter(
-			// 	ship.image,
-			// 	ship.playerX,
-			// 	ship.playerY,
-			// 	ship.playerXMiddle,
-			// 	ship.playerYMiddle,
-			// 	2,
-			// 	ship.rotation
-			// );
+			ship.playerAngle += ship.rotation;
+			drawImageRotated(ship.image, ship.playerX, ship.playerY, -ship.playerAngle);
 
 			// move the ship
 			ship.x += ship.thrust.x;
@@ -227,18 +233,18 @@ const mainLoop = () => {
 			// if ship off the edge of the screen then pop it back from the opp edge
 			if (ship.x < 0 - ship.radius) {
 				ship.x = canvas.width + ship.radius;
-				ship.setMiddle();
+				ship.playerX = canvas.width + ship.radius;
 			} else if (ship.x > canvas.width + ship.radius) {
 				ship.x = 0 - ship.radius;
-				ship.setMiddle();
+				ship.playerX = 0 - ship.radius;
 			}
 
 			if (ship.y < 0 - ship.radius) {
 				ship.y = canvas.height + ship.radius;
-				ship.setMiddle();
+				ship.playerY = canvas.height + ship.radius;
 			} else if (ship.y > canvas.height + ship.radius) {
 				ship.y = 0 - ship.radius;
-				ship.setMiddle();
+				ship.playerY = 0 - ship.radius;
 			}
 		}
 	} else {
