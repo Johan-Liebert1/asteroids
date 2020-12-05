@@ -16,13 +16,15 @@
         }
 
         main {
-            margin: 0 auto;
+            display: flex;
+            justify-content: center;
             width: 100%;
+            margin-bottom: 1rem;
         }
 
         #fire {
-            height: 3rem;
-            width: 3rem;
+            height: 5rem;
+            width: 5rem;
             background-color: red;
             color: white;
             border-radius: 50%;
@@ -32,14 +34,15 @@
         }
 
         #btnsForMobile {
-            display: flex;
+            display: none;
+            /* display: flex; */
             flex-direction: column;
             align-items: center;
             margin: 2rem 0;
         }
 
         .lrcontainer {
-            width: 10rem;
+            width: 20rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -47,7 +50,29 @@
         }
 
         .fas {
-            font-size: 2rem;
+            font-size: 4rem;
+        }
+
+        button {
+            padding: 1rem;
+            border-radius: 0.3rem;
+            outline: none;
+            border: none;
+            background-color: #0984e3;
+            color: azure;
+            font-weight: bolder;
+        }
+
+        p {
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        .music {
+            width: 20rem;
+            display: flex;
+            justify-content: space-between;
+            color: #e74c3c;
         }
 
     </style>
@@ -80,8 +105,10 @@
 
     </div>
 
-
-    <button id = 'music-btn'>Turn on Music</button>
+    <div class = 'music'>
+        <p id = 'musicOnOff'> Music OFF </p>
+        <button id = 'music-btn'>Turn on Music</button>
+    </div>
 
 
     <script src="js/constants.js"></script>

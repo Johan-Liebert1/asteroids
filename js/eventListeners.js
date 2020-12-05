@@ -3,6 +3,8 @@ const keyDown = e => {
 		return;
 	}
 
+	e.preventDefault();
+
 	switch (e.keyCode) {
 		// PRESSING SPACE
 		case 32:
@@ -31,6 +33,9 @@ const keyUp = e => {
 	if (ship.isDead) {
 		return;
 	}
+
+	e.preventDefault();
+
 	// stop rotating
 	switch (e.keyCode) {
 		case 32:

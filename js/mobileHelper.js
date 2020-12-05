@@ -6,6 +6,8 @@ let leftBtn = document.getElementById("leftBtn");
 let rightBtn = document.getElementById("rightBtn");
 
 const showMobileButtons = () => {
+	btnsForMobile.style.display = "flex";
+
 	fire.addEventListener("click", e => {
 		if (ship.isDead) {
 			return;

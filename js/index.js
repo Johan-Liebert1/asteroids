@@ -1,6 +1,7 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let musicBtn = document.getElementById("music-btn");
+let musicOnOff = document.getElementById("musicOnOff");
 let MUSIC_ON = false;
 
 let thruster = document.getElementById("fire");
@@ -27,8 +28,12 @@ musicBtn.addEventListener("click", () => {
 	MUSIC_ON = !MUSIC_ON;
 	if (MUSIC_ON) {
 		musicBtn.innerText = "Turn off Music";
+		musicOnOff.innerText = "Music ON";
+		musicOnOff.style.color = "#2ecc71";
 	} else {
 		musicBtn.innerText = "Turn on Music";
+		musicOnOff.innerText = "Music OFF";
+		musicOnOff.style.color = "#e74c3c";
 	}
 });
 
