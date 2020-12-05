@@ -160,7 +160,7 @@ const mainLoop = () => {
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
 		ctx.fillStyle = `rgba(255, 255, 255,${textAlpha})`;
-		ctx.font = `small-caps ${TEXT_SIZE}rem Arial`;
+		ctx.font = `small-caps ${TEXT_SIZE}rem Fjalla One`;
 		ctx.fillText(text, canvas.width / 2, canvas.height * 0.2);
 		textAlpha -= 1.0 / TEXT_FADE_TIME / FPS;
 	} else if (ship.isDead) {
@@ -181,13 +181,13 @@ const mainLoop = () => {
 	// draw Score
 	ctx.textAlign = "right";
 	ctx.fillStyle = `rgb(255, 255, 255)`;
-	ctx.font = `${TEXT_SIZE - 1.5}rem Arial`;
+	ctx.font = `${TEXT_SIZE - 1.5}rem Fjalla One`;
 	ctx.fillText(`Score ${score}`, canvas.width - 30, canvas.height * 0.075);
 
 	// draw Score
 	ctx.textAlign = "center";
 	ctx.fillStyle = `rgb(255, 255, 255)`;
-	ctx.font = `${TEXT_SIZE - 1.5}rem Arial`;
+	ctx.font = `${TEXT_SIZE - 1.5}rem Fjalla One`;
 	ctx.fillText(`High Score ${highScore}`, canvas.width / 2, canvas.height * 0.075);
 
 	// laster collision with asteroids
