@@ -18,7 +18,7 @@ if (window.innerWidth < 1000) {
 
 canvas.width = window.innerWidth > 1000 ? window.innerWidth * 0.7 : window.innerWidth * 0.95;
 
-if (window.innerWidth < 600) {
+if (window.innerWidth < 900) {
 	canvas.height = window.innerHeight * 0.5;
 } else {
 	canvas.height = window.innerHeight * 0.9;
@@ -127,7 +127,7 @@ const mainLoop = () => {
 	// Draw SHIP
 	if (!isShipExploding) {
 		if (isShipBlinking && !ship.isDead) {
-			drawShip(ship.x, ship.y, ship.angle, ship.radius);
+			drawImageRotated(ship.image, ship.playerX, ship.playerY, -ship.playerAngle);
 		}
 		// handle blinking
 
